@@ -1,9 +1,9 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  get-the-sha:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Get the sha from my dofiles
     steps:
     - name: Retrieve sha from a repo
       id: remote_sha
@@ -11,7 +11,7 @@ jobs:
       with:
         username: "${{ github.actor }}"
         password: "${{ secrets.TOKEN }}"
-        repo: 'https://github.com/mego22/dotfiles.git'
-        branch: 'HEAD'
+        repo: "https://github.com/mego22/dotfiles.git"
+        branch: "HEAD"
     - name: Get the sha
       run: echo "The sha was ${{ steps.remote_sha.outputs.sha }}"
