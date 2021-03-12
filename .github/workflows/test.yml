@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Retrieve sha from a repo
       id: remote_sha
-      uses: mego22/actions-git-sha@v1
+      uses: mego22/actions-git-sha@main
       with:
         username: "${{ github.actor }}"
         password: "${{ secrets.TOKEN }}"
