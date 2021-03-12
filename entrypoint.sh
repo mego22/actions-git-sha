@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 
 GIT_USERNAME="${INPUT_USERNAME}"
 GIT_TOKEN="${INPUT_PASSWORD}"
