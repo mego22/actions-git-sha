@@ -7,11 +7,11 @@ jobs:
     steps:
     - name: Retrieve sha from a repo
       id: remote_sha
-      uses: mego22/actions-git-sha@v1
+      uses: mego22/actions-git-sha@testing
       with:
         username: "${{ github.actor }}"
         password: "${{ secrets.TOKEN }}"
         repo: "https://github.com/mego22/dotfiles.git"
         branch: "HEAD"
-    - name: Get the sha
-      run: echo "The sha was ${{ steps.remote_sha.outputs.sha }}"
+    - name: Print sha
+      run: echo "The sha is ${{ steps.remote_sha.outputs.sha }}"
