@@ -1,0 +1,28 @@
+# action.yml
+name: 'Git SHA'
+description: 'Retrieve the sha from a remote git repository'
+inputs:
+  username:  # username to use
+    description: 'Git username'
+    required: true
+  password:  # username to use
+    description: 'Git password or token'
+    required: true
+  repo:  # username to use
+    description: 'Git repository'
+    required: true
+  branch:  # username to use
+    description: 'Git branch'
+    required: true
+    default: 'HEAD'
+outputs:
+  sha:
+    description: 'sha of the repository/branch'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
+    - ${{ inputs.repo }}
+    - ${{ inputs.branch }}

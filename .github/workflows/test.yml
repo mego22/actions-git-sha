@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+    - name: Retrieve sha from a repo
+      id: remote_sha
+      uses: mego22/actions-git-sha@v1
+      with:
+        username: "${{ github.actor }}"
+        password: "${{ secrets.TOKEN }}"
+        repo: 'https://github.com/mego22/dotfiles.git'
+        branch: 'HEAD'
+    - name: Get the sha
+      run: echo "The sha was ${{ steps.remote_sha.outputs.sha }}"
