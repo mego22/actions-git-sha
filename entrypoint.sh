@@ -7,8 +7,8 @@ GIT_REPO="${INPUT_REPO}"
 GIT_BRANCH="${INPUT_BRANCH:-HEAD}"
 
 # Setup to be able to pull roles with ansible-galaxy
-echo "https://$GIT_USERNAME:$GIT_TOKEN@github.com" > ~/.git-credentials
-chmod 0600 ~/.git-credentials 
+echo "https://$GIT_USERNAME:$GIT_TOKEN@github.com" > "${HOME}/.git-credentials"
+chmod 0600 "${HOME}/.git-credentials"
 git config --global credential.helper store
 
 
