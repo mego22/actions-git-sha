@@ -1,5 +1,5 @@
 # action.yml
-name: 'Git SHA'
+name: 'Git remote sha'
 description: 'Retrieve the sha from a remote git repository'
 inputs:
   username:  # username to use
