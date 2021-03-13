@@ -1,9 +1,28 @@
 on: [push]
 
 jobs:
-  get-the-sha:
+  test-public-repo:
+
     runs-on: ubuntu-latest
-    name: Get the sha from my dofiles
+
+    name: Get the sha from public repo
+
+    steps:
+    - name: Retrieve sha from a repo
+      id: remote_sha
+      uses: mego22/actions-git-sha@main
+      with:
+        repo: "https://github.com/mego22/dotfiles.git"
+
+    - name: Print sha
+      run: echo "The sha is ${{ steps.remote_sha.outputs.sha }}"
+
+  test-private-repo:
+
+    runs-on: ubuntu-latest
+
+    name: Get the sha from private repo
+
     steps:
     - name: Retrieve sha from a repo
       id: remote_sha
@@ -11,7 +30,27 @@ jobs:
       with:
         username: "${{ github.actor }}"
         password: "${{ secrets.TOKEN }}"
-        repo: "https://github.com/mego22/dotfiles.git"
+        repo: "https://github.com/mego22/git-sha-test.git"
         branch: "HEAD"
+
+    - name: Print sha
+      run: echo "The sha is ${{ steps.remote_sha.outputs.sha }}"
+
+  test-non-default-branch:
+
+    runs-on: ubuntu-latest
+
+    name: Get the sha from non-default branch
+
+    steps:
+    - name: Retrieve sha from a repo
+      id: remote_sha
+      uses: mego22/actions-git-sha@main
+      with:
+        username: "${{ github.actor }}"
+        password: "${{ secrets.TOKEN }}"
+        repo: "https://github.com/mego22/git-sha-test.git"
+        branch: "git-sha-test"
+
     - name: Print sha
       run: echo "The sha is ${{ steps.remote_sha.outputs.sha }}"
