@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+set -xe
 set -o pipefail
 
 GIT_REPO="${INPUT_REPO}"
